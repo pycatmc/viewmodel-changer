@@ -53,9 +53,9 @@ public abstract class MixinHeldItemRenderer {
                 matrices.translate(Viewmodel.POS_X.getValue() * 0.1, Viewmodel.POS_Y.getValue() * 0.1, Viewmodel.POS_Z.getValue() * 0.1);
             }
             if (Viewmodel.ROTATION.getValue()) {
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(Viewmodel.ROTATION_Y.getValue()));
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(Viewmodel.ROTATION_X.getValue()));
-                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(Viewmodel.ROTATION_Z.getValue()));
+                matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(Viewmodel.ROTATION_Y.getValue()));
+                matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(Viewmodel.ROTATION_X.getValue()));
+                matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion(Viewmodel.ROTATION_Z.getValue()));
             }
             if (Viewmodel.SCALE.getValue()) {
                 matrices.scale(1 - (1 - Viewmodel.SCALE_X.getValue()) * 0.1F, 1 - (1 - Viewmodel.SCALE_Y.getValue()) * 0.1F, 1 - (1 - Viewmodel.SCALE_Z.getValue()) * 0.1F);
@@ -83,9 +83,9 @@ public abstract class MixinHeldItemRenderer {
                     if (player.isUsingItem() && player.getItemUseTimeLeft() > 0 && player.getActiveHand() == hand) {
                         this.applyEquipOffset(matrices, arm, equipProgress);
                         matrices.translate((float)i * -0.4785682F, -0.0943870022892952D, 0.05731530860066414D);
-                        matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-11.935F));
-                        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float)i * 65.3F));
-                        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float)i * -9.785F));
+                        matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(-11.935F));
+                        matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((float)i * 65.3F));
+                        matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion((float)i * -9.785F));
                         v = (float)item.getMaxUseTime() - ((float)this.client.player.getItemUseTimeLeft() - tickDelta + 1.0F);
                         w = v / (float)CrossbowItem.getPullTime(item);
                         if (w > 1.0F) {
@@ -101,7 +101,7 @@ public abstract class MixinHeldItemRenderer {
 
                         matrices.translate(w * 0.0F, w * 0.0F, w * 0.04F);
                         matrices.scale(1.0F, 1.0F, 1.0F + w * 0.2F);
-                        matrices.multiply(Vec3f.NEGATIVE_Y.getDegreesQuaternion((float)i * 45.0F));
+                        matrices.multiply(Vector3f.NEGATIVE_Y.getDegreesQuaternion((float)i * 45.0F));
                     } else {
                         v = -0.4F * MathHelper.sin(MathHelper.sqrt(swingProgress) * 3.1415927F);
                         w = 0.2F * MathHelper.sin(MathHelper.sqrt(swingProgress) * 6.2831855F);
@@ -111,7 +111,7 @@ public abstract class MixinHeldItemRenderer {
                         this.applySwingOffset(matrices, arm, swingProgress);
                         if (bl4 && swingProgress < 0.001F && bl) {
                             matrices.translate((float)i * -0.641864F, 0.0D, 0.0D);
-                            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float)i * 10.0F));
+                            matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((float)i * 10.0F));
                         }
                     }
 
@@ -131,9 +131,9 @@ public abstract class MixinHeldItemRenderer {
                             case BOW -> {
                                 this.applyEquipOffset(matrices, arm, equipProgress);
                                 matrices.translate((float) o * -0.2785682F, 0.18344387412071228D, 0.15731531381607056D);
-                                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-13.935F));
-                                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float) o * 35.3F));
-                                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float) o * -9.785F));
+                                matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(-13.935F));
+                                matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((float) o * 35.3F));
+                                matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion((float) o * -9.785F));
                                 u = (float) item.getMaxUseTime() - ((float) this.client.player.getItemUseTimeLeft() - tickDelta + 1.0F);
                                 v = u / 20.0F;
                                 v = (v * v + v * 2.0F) / 3.0F;
@@ -148,14 +148,14 @@ public abstract class MixinHeldItemRenderer {
                                 }
                                 matrices.translate(v * 0.0F, v * 0.0F, v * 0.04F);
                                 matrices.scale(1.0F, 1.0F, 1.0F + v * 0.2F);
-                                matrices.multiply(Vec3f.NEGATIVE_Y.getDegreesQuaternion((float) o * 45.0F));
+                                matrices.multiply(Vector3f.NEGATIVE_Y.getDegreesQuaternion((float) o * 45.0F));
                             }
                             case SPEAR -> {
                                 this.applyEquipOffset(matrices, arm, equipProgress);
                                 matrices.translate((float) o * -0.5F, 0.699999988079071D, 0.10000000149011612D);
-                                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-55.0F));
-                                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float) o * 35.3F));
-                                matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float) o * -9.785F));
+                                matrices.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(-55.0F));
+                                matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((float) o * 35.3F));
+                                matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion((float) o * -9.785F));
                                 u = (float) item.getMaxUseTime() - ((float) this.client.player.getItemUseTimeLeft() - tickDelta + 1.0F);
                                 v = u / 10.0F;
                                 if (v > 1.0F) {
@@ -169,7 +169,7 @@ public abstract class MixinHeldItemRenderer {
                                 }
                                 matrices.translate(0.0D, 0.0D, v * 0.2F);
                                 matrices.scale(1.0F, 1.0F, 1.0F + v * 0.2F);
-                                matrices.multiply(Vec3f.NEGATIVE_Y.getDegreesQuaternion((float) o * 45.0F));
+                                matrices.multiply(Vector3f.NEGATIVE_Y.getDegreesQuaternion((float) o * 45.0F));
                             }
                         }
                     } else if (player.isUsingRiptide()) {
@@ -178,8 +178,8 @@ public abstract class MixinHeldItemRenderer {
                         if (!Viewmodel.CHANGE_SWING.getValue()) {
                             matrices.translate((float) o * -0.4F, 0.800000011920929D, 0.30000001192092896D);
                         }
-                        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion((float)o * 65.0F));
-                        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion((float)o * -85.0F));
+                        matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion((float)o * 65.0F));
+                        matrices.multiply(Vector3f.POSITIVE_Z.getDegreesQuaternion((float)o * -85.0F));
                     } else {
                         float aa = -0.4F * MathHelper.sin(MathHelper.sqrt(swingProgress) * 3.1415927F);
                         u = 0.2F * MathHelper.sin(MathHelper.sqrt(swingProgress) * 6.2831855F);
